@@ -7,19 +7,27 @@ require './question'
 
 class Game
   attr_reader :player1, :player2
-  attr_accessor :current_player
+  attr_accessor :current_player, :first_round
 
   def initialize
     @player1 = Player.new("Player 1")
     @player2 = Player.new("Player 2")
     @current_player = self.player1
+    @first_round = true
   end
 
   def game_start
     until (self.player1.lives === 0 || self.player2.lives === 0)
+      # Divider shows only after first round
+      unless first_round
+        puts '----- NEW TURN -----'
+      end
+      self.first_round = false
+
       # Ask user a question
       question = Question.new
       puts "#{current_player.name}: #{question.question}"
+      print '> '
       question.prompt_question
 
       unless question.answered_correctly
@@ -31,6 +39,7 @@ class Game
 
       self.switch_players
     end
+    self.end_game
   end
 
   def switch_players
@@ -40,41 +49,16 @@ class Game
       self.current_player = self.player1
     end
   end
+
+  def end_game
+    puts '----- GAME OVER -----'
+    unless player1.lives === 0
+      puts "#{player1.name} wins with a score of #{player1.lives}/3"
+    else
+      puts "#{player2.name} wins with a score of #{player2.lives}/3"
+    end
+  end
 end
 
 game = Game.new
 game.game_start
-
-
-
-
-#   initialize:
-#     player1: new Player()
-#     player2: new Player()
-#     current_player: player1
-
-#   methods:
-#     game_start()
-
-#       unless (player1.lives === 0 OR player2.lives === 0)
-#         ask new Question()
-
-#         if question is answered incorrectly
-#           current_player.lose_life()
-  
-#         # Show current score
-#         print "P1: x/3 vs P2: x/3"
-
-#         switch_players()
-      
-#       game_end()
-
-#     switch_players()
-#       if current_player is player 1, current_player = 2,
-#       if current_player is player2, current_player = 1
-
-#     game_end()
-#       if (player1.lives not === 0)
-#         print "Player 1 wins with a score of player1.lives"
-#       else
-#         print "Player 2 wins with a score of player2.lives"
