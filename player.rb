@@ -1,4 +1,6 @@
-#   This class will be responsible for keeping track of a player's lives.
+# PLAYER
+# This class will be responsible for keeping track of a player's lives.
+
 class Player
 
   def initialize()

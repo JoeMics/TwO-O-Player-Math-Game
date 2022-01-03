@@ -10,7 +10,7 @@ PLAYER
 
 
 QUESTION
-  This class will be responsible for generating a question. It will also be responsible for stating whether or not the question is answered correctly or incorrectly, and keeping track of which player in answering.
+  This class will be responsible for generating a question. It will also be responsible for stating whether or not the question is answered correctly or incorrectly.
 
   initialize ():
     first_number: Random Number 1 - 20
