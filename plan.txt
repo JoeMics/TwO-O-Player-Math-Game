@@ -1,40 +1,69 @@
-player1
-player2
-  This class will be responsible for keeping track of a player's lives. It will also be responsible for answering questions.
+PLAYER
+  This class will be responsible for keeping track of a player's lives.
 
-  initialized:
+  initialize:
     lives: 3
   
-  public methods:
+  methods:
     lose_life()
+      lives -1
 
-question
+
+QUESTION
   This class will be responsible for generating a question. It will also be responsible for stating whether or not the question is answered correctly or incorrectly, and keeping track of which player in answering.
 
-  initialized:
-    first_number: 1 - 20
-    second_number: 1 - 20
-    answer: first_number + second_number
-    player: Player(1/2)
+  initialize ():
+    first_number: Random Number 1 - 20
+    second_number: Random Number 1 - 20
+    question: "What does {first_number} plus {second_number} equal?"
+    correct_answer: first_number + second_number
+    answered_correctly: null
 
-  public methods:
+  methods:
     prompt_question()
-      ask "What does {first_number} plus {second_number} equal?"
+      ask question
+
+    answer(number)
+      if number === correct_answer
+        correct_result()
+      else
+        incorrect_result()
 
     correct_result()
       print "YES! You are correct."
 
-    incorrect_result(player)
+    incorrect_result()
       print "Seriously? No!"
-      player.lose_life()
 
-game
- This class will handle the current state of the game, and keep track of player's scores. It keeps track of whose turn it is.
 
-  initialized:
-    players: []
-    current_player: players[x]
+GAME
+ This  class will handle the current state of the game, and keep track of player's scores. It keeps track of whose turn it is.
+
+  initialize:
+    player1: new Player()
+    player2: new Player()
+    current_player: player1
+    winner:null
 
   methods:
     game_start()
 
+      unless (player lives === 0)
+        ask new Question()
+
+        if question is answered incorrectly
+          current_player.lose_life()
+  
+        # Show current score
+        print "P1: x/3 vs P2: x/3"
+
+        switch_players()
+      
+      game_end()
+
+    switch_players()
+      if current_player is player 1, current_player = 2,
+      if current_player is player2, current_player = 1
+
+    game_end()
+      print "Player x wins with a score of winner.lives"
