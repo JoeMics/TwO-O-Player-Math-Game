@@ -8,8 +8,8 @@ class Question
   attr_reader :question, :correct_answer
 
   def initialize()
-    @first_number = rand(1..20)
-    @second_number = rand(1..20)
+    @first_number = rand(1...20)
+    @second_number = rand(1...20)
     @question = "What does #{self.first_number} plus #{self.second_number} equal?"
     @correct_answer = self.first_number + self.second_number
     @answered_correctly = false
