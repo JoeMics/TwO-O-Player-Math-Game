@@ -25,9 +25,9 @@ QUESTION
 
     answer(number)
       if number === correct_answer
-        correct_result()
+        answered_correctly = true
       else
-        incorrect_result()
+        answered_correctly = false
 
     correct_result()
       print "YES! You are correct."
