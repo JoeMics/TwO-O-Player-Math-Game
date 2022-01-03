@@ -25,7 +25,6 @@ class Question
   end
 
   def prompt_question
-    puts self.question
     answer = gets.chomp
 
     if answer.to_i === self.correct_answer
