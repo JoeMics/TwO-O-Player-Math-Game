@@ -43,12 +43,11 @@ GAME
     player1: new Player()
     player2: new Player()
     current_player: player1
-    winner:null
 
   methods:
     game_start()
 
-      unless (player lives === 0)
+      unless (player1.lives === 0 OR player2.lives === 0)
         ask new Question()
 
         if question is answered incorrectly
@@ -66,4 +65,7 @@ GAME
       if current_player is player2, current_player = 1
 
     game_end()
-      print "Player x wins with a score of winner.lives"
+      if (player1.lives not === 0)
+        print "Player 1 wins with a score of player1.lives"
+      else
+        print "Player 2 wins with a score of player2.lives"
