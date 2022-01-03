@@ -2,12 +2,13 @@
 # This class will be responsible for keeping track of a player's lives.
 
 class Player
+  attr_accessor :lives
 
-  def initialize()
+  def initialize
     @lives = 3
   end
 
   def lose_life
-    @lives -= 1
+    self.lives -= 1
   end
 end
