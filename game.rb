@@ -16,7 +16,7 @@ class Game
     @first_round = true
   end
 
-  def game_start
+  def start
     until (self.player1.lives === 0 || self.player2.lives === 0)
       # Divider shows only after first round
       unless first_round
@@ -59,6 +59,3 @@ class Game
     end
   end
 end
-
-game = Game.new
-game.game_start
