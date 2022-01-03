@@ -1,0 +1,40 @@
+player1
+player2
+  This class will be responsible for keeping track of a player's lives. It will also be responsible for answering questions.
+
+  initialized:
+    lives: 3
+  
+  public methods:
+    lose_life()
+
+question
+  This class will be responsible for generating a question. It will also be responsible for stating whether or not the question is answered correctly or incorrectly, and keeping track of which player in answering.
+
+  initialized:
+    first_number: 1 - 20
+    second_number: 1 - 20
+    answer: first_number + second_number
+    player: Player(1/2)
+
+  public methods:
+    prompt_question()
+      ask "What does {first_number} plus {second_number} equal?"
+
+    correct_result()
+      print "YES! You are correct."
+
+    incorrect_result(player)
+      print "Seriously? No!"
+      player.lose_life()
+
+game
+ This class will handle the current state of the game, and keep track of player's scores. It keeps track of whose turn it is.
+
+  initialized:
+    players: []
+    current_player: players[x]
+
+  methods:
+    game_start()
+
